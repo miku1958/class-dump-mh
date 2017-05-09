@@ -233,7 +233,7 @@ static BOOL debug = NO;
         } else if ([attr hasPrefix:@"C"]) {
             [alist addObject:@"copy"];
         } else if ([attr hasPrefix:@"&"]) {
-            [alist addObject:@"retain"];
+            [alist addObject:@"strong"];
         } else if ([attr hasPrefix:@"G"]) {
             [alist addObject:[NSString stringWithFormat:@"getter=%@", [attr substringFromIndex:1]]];
         } else if ([attr hasPrefix:@"S"]) {
@@ -246,6 +246,7 @@ static BOOL debug = NO;
             // @property(assign) __weak NSObject *prop;
             // Only appears with GC.
             isWeak = YES;
+            [alist addObject:@"weak"];
         } else if ([attr hasPrefix:@"P"]) {
             // @property(assign) __strong NSObject *prop;
             // Only appears with GC.
@@ -262,13 +263,13 @@ static BOOL debug = NO;
     }
     
     if ([alist count] > 0) {
-        [self.resultString appendFormat:@"@property(%@) ", [alist componentsJoinedByString:@", "]];
+        [self.resultString appendFormat:@"@property (%@) ", [alist componentsJoinedByString:@", "]];
     } else {
         [self.resultString appendString:@"@property "];
     }
     
-    if (isWeak)
-        [self.resultString appendString:@"__weak "];
+    //if (isWeak)
+        //[self.resultString appendString:@"__weak "];
     
     NSString *formattedString = [self.classDump.typeController.propertyTypeFormatter formatVariable:property.name type:parsedType];
     [self.resultString appendFormat:@"%@;", formattedString];
