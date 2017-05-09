@@ -150,7 +150,7 @@
     if (referenceString != nil)
         [self.resultString insertString:referenceString atIndex:self.referenceLocation];
 
-    NSString *filename = [NSString stringWithFormat:@"%@-%@.h", category.className, category.name];
+    NSString *filename = [NSString stringWithFormat:@"%@+%@.h", category.className, category.name];
     if (self.outputPath != nil)
         filename = [self.outputPath stringByAppendingPathComponent:filename];
 
