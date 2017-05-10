@@ -46,7 +46,7 @@
 - (void)visitIvar:(CDOCInstanceVariable *)ivar;
 - (void)visitProperty:(CDOCProperty *)property;
 
-- (void)visitRemainingProperties:(CDVisitorPropertyState *)propertyState;
+//- (void)visitRemainingProperties:(CDVisitorPropertyState *)propertyState;
 
 @property (assign) BOOL shouldShowStructureSection;
 @property (assign) BOOL shouldShowProtocolSection;

@@ -119,7 +119,7 @@ static BOOL debug = NO;
     [self.resultString appendString:@"\n"];
 }
 
-- (void)visitInstanceMethod:(CDOCMethod *)method propertyState:(CDVisitorPropertyState *)propertyState;
+- (void)visitInstanceMethod:(CDOCMethod *)method propertyState:(CDVisitorPropertyState *)propertyState
 {
     CDOCProperty *property = [propertyState propertyForAccessor:method.name];
     if (property == nil) {
@@ -127,15 +127,16 @@ static BOOL debug = NO;
         [self.resultString appendString:@"- "];
         [method appendToString:self.resultString typeController:self.classDump.typeController];
         [self.resultString appendString:@"\n"];
-    } else {
-        if ([propertyState hasUsedProperty:property] == NO) {
-            //NSLog(@"Emitting property %@ triggered by method %@", property.name, method.name);
-            [self visitProperty:property];
-            [propertyState useProperty:property];
-        } else {
-            //NSLog(@"Have already emitted property %@ triggered by method %@", property.name, method.name);
-        }
     }
+//    } else {
+//        if ([propertyState hasUsedProperty:property] == NO) {
+//            //NSLog(@"Emitting property %@ triggered by method %@", property.name, method.name);
+//            [self visitProperty:property];
+//            [propertyState useProperty:property];
+//        } else {
+//            //NSLog(@"Have already emitted property %@ triggered by method %@", property.name, method.name);
+//        }
+//    }
 }
 
 - (void)visitIvar:(CDOCInstanceVariable *)ivar;
@@ -190,6 +191,7 @@ static BOOL debug = NO;
         [self.resultString appendString:@"\n"];
 }
 
+#if 0
 - (void)visitRemainingProperties:(CDVisitorPropertyState *)propertyState;
 {
     NSArray *remaining = propertyState.remainingProperties;
@@ -203,6 +205,7 @@ static BOOL debug = NO;
             [self visitProperty:property];
     }
 }
+#endif
 
 #pragma mark -
 

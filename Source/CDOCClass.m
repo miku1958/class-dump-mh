@@ -80,13 +80,13 @@
             [visitor visitIvar:instanceVariable];
         [visitor didVisitIvarsOfClass:self];
         
-        //[visitor willVisitPropertiesOfClass:self];
-        //[self visitProperties:visitor];
-        //[visitor didVisitPropertiesOfClass:self];
+        [visitor willVisitPropertiesOfClass:self];
+        [self visitProperties:visitor];
+        [visitor didVisitPropertiesOfClass:self];
         
         [self visitMethods:visitor propertyState:propertyState];
         // Should mostly be dynamic properties
-        [visitor visitRemainingProperties:propertyState];
+        //[visitor visitRemainingProperties:propertyState];
         [visitor didVisitClass:self];
     }
 }

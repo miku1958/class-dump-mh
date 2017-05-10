@@ -42,6 +42,7 @@
 - (NSString *)methodSearchContext;
 - (void)recursivelyVisit:(CDVisitor *)visitor;
 
+- (void)visitProperties:(CDVisitor *)visitor;
 - (void)visitMethods:(CDVisitor *)visitor propertyState:(CDVisitorPropertyState *)propertyState;
 
 - (void)mergeMethodsFromProtocol:(CDOCProtocol *)other;

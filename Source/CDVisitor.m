@@ -129,8 +129,8 @@
 {
 }
 
-- (void)visitRemainingProperties:(CDVisitorPropertyState *)propertyState;
-{
-}
+//- (void)visitRemainingProperties:(CDVisitorPropertyState *)propertyState;
+//{
+//}
 
 @end
